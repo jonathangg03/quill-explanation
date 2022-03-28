@@ -1,8 +1,9 @@
 const express = require('express')
 const cors = require('cors')
 const db = require('./db')
+const Model = require('./model')
 const app = express()
-// db('')
+db('mongodb://localhost:27017/quill')
 
 app.use(cors())
 app.use(express.json())
