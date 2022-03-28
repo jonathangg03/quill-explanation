@@ -45,7 +45,9 @@ function New() {
           value={title}
           onChange={handleChange}
         />
-        <div className='editor' ref={quillRef}></div>
+        <div className='editor'>
+          <div ref={quillRef}></div>
+        </div>
         <button>Enviar</button>
       </form>
     </>

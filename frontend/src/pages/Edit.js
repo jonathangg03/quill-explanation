@@ -15,13 +15,11 @@ function Edit() {
     const fetching = async (id) => {
       const res = await fetch(`http://localhost:3001/${id}`)
       const note = await res.json()
-      return note
-    }
-
-    if (params.id || quill) {
-      const note = fetching(params.id)
       quill.setContents(JSON.parse(note.content))
       setTitle(note.title)
+    }
+    if (params.id && quill) {
+      fetching(params.id)
     }
   }, [params, quill])
 
@@ -61,7 +59,9 @@ function Edit() {
           value={title}
           onChange={handleChange}
         />
-        <div className='editor' ref={quillRef}></div>
+        <div className='editor'>
+          <div ref={quillRef}></div>
+        </div>
         <button>Enviar</button>
       </form>
     </>
