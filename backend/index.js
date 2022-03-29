@@ -10,29 +10,29 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', async (req, res) => {
-  const documentEl = await Model.find()
-  res.send(documentEl)
+  const note = await Model.find()
+  res.send(note)
 })
 
 app.get('/:id', async (req, res) => {
-  const documentEl = await Model.findById(req.params.id)
-  res.send(documentEl)
+  const note = await Model.findById(req.params.id)
+  res.send(note)
 })
 
 app.post('/', async (req, res) => {
   const { body } = req
-  const newDocument = new Model(body)
-  await newDocument.save()
-  res.send(newDocument)
+  const newNote = new Model(body)
+  await newNote.save()
+  res.send(newNote)
 })
 
 app.put('/:id', async (req, res) => {
   const { body, params } = req
-  const documentEl = await Model.findOneAndUpdate(
+  const note = await Model.findOneAndUpdate(
     { _id: params.id },
     { _id: params.id, ...body }
   )
-  res.send(documentEl)
+  res.send(note)
 })
 
 app.listen(3001, () => console.log('http://localhost:3001'))
