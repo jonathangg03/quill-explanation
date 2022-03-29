@@ -7,7 +7,6 @@ db('mongodb://localhost:27017/quill')
 
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
 
 app.get('/', async (req, res) => {
   const note = await Model.find()
